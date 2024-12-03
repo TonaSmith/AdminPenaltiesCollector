@@ -1,6 +1,9 @@
 # 批量获取金融监管总局-行政处罚-板块的处罚信息
 ## 一、设计需求
-因为工作需要，统计金融监管总局-行政处罚板块-监管局本级有关人寿保险公司的行政处罚的详细处罚内容。[网页地址](https://www.cbirc.gov.cn/cn/view/pages/ItemList.html?itemPId=923&itemId=4114&itemUrl=ItemListRightList.html&itemName=%E7%9B%91%E7%AE%A1%E5%B1%80%E6%9C%AC%E7%BA%A7&itemsubPId=931&itemsubPName=%E8%A1%8C%E6%94%BF%E5%A4%84%E7%BD%9A#1)
+因为工作需要，统计金融监管总局-行政处罚板块-监管局本级有关人寿保险公司的行政处罚的详细处罚内容。
+
+[金融监管局-监管本级处罚信息的网页地址](https://www.cbirc.gov.cn/cn/view/pages/ItemList.html?itemPId=923&itemId=4114&itemUrl=ItemListRightList.html&itemName=%E7%9B%91%E7%AE%A1%E5%B1%80%E6%9C%AC%E7%BA%A7&itemsubPId=931&itemsubPName=%E8%A1%8C%E6%94%BF%E5%A4%84%E7%BD%9A#1)
+
 ## 二、设计准备
 1. 经观察，该网页均为超链接，且超链接文本均为"xxx行政处罚信息公开表" ；
 2. 点击每个"xxx行政处罚信息公开表" 跳转进新页面，发现处罚信息均以表格形式展现；
@@ -21,11 +24,13 @@
    - `WebDriverWait` 和 `expected_conditions as EC` - 用于等待页面元素加载完成或满足特定条件。
    - `Options` - 用于设置ChromeDriver的各种选项。
 
-[^]: 由于监管总局具有反爬机制，无法使用request进行批量操作，只能使用selenium调用GoogleDriver模拟操作
+**由于监管总局具有反爬机制，无法使用request进行批量操作，只能使用selenium调用GoogleDriver模拟操作**
+
 3. 第2步：使用了pandas库
 - 从指定路径读取文件，对于特定字段后仅保留一个制表符，删除多余制表符，并保存结果；
 - 遍历指定目录下的所有.txt文件，并对每个文件应用clean_file函数，将清理后的文件保存到output_directory；
 - 从指定目录下的所有cleaned .txt文件中读取数据，并创建一个Excel文件；
 - 将'行政处罚决定书文号', '被处罚当事人', '主要违法违规事实','行政处罚依据', '行政处罚决定', '作出处罚决定的机关名称','作出处罚决定的日期'设置为excel表头；
 - 将处理后txt文件内容保存在excel中。
-[^]: 请注意：这里只处理了"监管本级"的相关内容，如需处理"总局机关"、"监管分局本级"，请替换链接
+
+**请注意：这里只处理了"监管本级"的相关内容，如需处理"总局机关"、"监管分局本级"，请替换链接**
