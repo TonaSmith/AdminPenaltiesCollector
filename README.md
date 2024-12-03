@@ -4,12 +4,15 @@
 
 [金融监管局-监管本级处罚信息的网页地址](https://www.cbirc.gov.cn/cn/view/pages/ItemList.html?itemPId=923&itemId=4114&itemUrl=ItemListRightList.html&itemName=%E7%9B%91%E7%AE%A1%E5%B1%80%E6%9C%AC%E7%BA%A7&itemsubPId=931&itemsubPName=%E8%A1%8C%E6%94%BF%E5%A4%84%E7%BD%9A#1)
 
-![image-20241203144058835](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20241203144058835.png)
+![image-20241203144528697](E:\工作资料\监管处罚信息\assets\image-20241203144528697.png)
 
 ## 二、设计准备
 1. 经观察，该网页均为超链接，且超链接文本均为"xxx行政处罚信息公开表" ；
 2. 点击每个"xxx行政处罚信息公开表" 跳转进新页面，发现处罚信息均以表格形式展现；
-3. 在表格上F12后发现，表格内容均存储在<table><tr></tr></tabel>标签中；
+3. 在表格上F12后发现，表格内容均存储在<table><td></td></tabel>标签中。
+
+![image-20241203144714937](E:\工作资料\监管处罚信息\assets\image-20241203144714937.png)
+
 ## 三、程序设计
 1. 本程序分为两步：
 - 第1步：使用Python将符合要求的内容保存在txt中。
@@ -43,4 +46,4 @@
    - 输入要访问的目标网址
    - 输入要翻页的数量（默认从第1页开始）
    - 输入GoogleDriver的文件路径
-2. 
+2. 再运行`处罚 txt2excel .py`
